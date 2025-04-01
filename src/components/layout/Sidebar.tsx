@@ -7,7 +7,6 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-  SidebarNavLink,
 } from "@/components/ui/sidebar";
 import { currentUser } from "@/data/mockData";
 import { 
@@ -21,6 +20,7 @@ import {
   Settings,
   HelpCircle
 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const AppSidebar = () => {
   const { role } = currentUser;
@@ -33,68 +33,68 @@ const AppSidebar = () => {
       <SidebarContent>
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarNavLink to="/">
-              <SidebarMenuButton>
+            <SidebarMenuButton asChild>
+              <Link to="/">
                 <HomeIcon className="h-5 w-5" />
                 <span>Dashboard</span>
-              </SidebarMenuButton>
-            </SidebarNavLink>
+              </Link>
+            </SidebarMenuButton>
           </SidebarMenuItem>
 
           <SidebarMenuItem>
-            <SidebarNavLink to="#">
-              <SidebarMenuButton>
+            <SidebarMenuButton asChild>
+              <Link to="#">
                 <ClipboardList className="h-5 w-5" />
                 <span>Order Queue</span>
-              </SidebarMenuButton>
-            </SidebarNavLink>
+              </Link>
+            </SidebarMenuButton>
           </SidebarMenuItem>
 
           <SidebarMenuItem>
-            <SidebarNavLink to="#">
-              <SidebarMenuButton>
+            <SidebarMenuButton asChild>
+              <Link to="#">
                 <Package2 className="h-5 w-5" />
                 <span>Inventory</span>
-              </SidebarMenuButton>
-            </SidebarNavLink>
+              </Link>
+            </SidebarMenuButton>
           </SidebarMenuItem>
 
           <SidebarMenuItem>
-            <SidebarNavLink to="#">
-              <SidebarMenuButton>
+            <SidebarMenuButton asChild>
+              <Link to="#">
                 <QrCode className="h-5 w-5" />
                 <span>Prescriptions</span>
-              </SidebarMenuButton>
-            </SidebarNavLink>
+              </Link>
+            </SidebarMenuButton>
           </SidebarMenuItem>
 
           <SidebarMenuItem>
-            <SidebarNavLink to="#">
-              <SidebarMenuButton>
+            <SidebarMenuButton asChild>
+              <Link to="#">
                 <Truck className="h-5 w-5" />
                 <span>Deliveries</span>
-              </SidebarMenuButton>
-            </SidebarNavLink>
+              </Link>
+            </SidebarMenuButton>
           </SidebarMenuItem>
 
           {role === "manager" && (
             <>
               <SidebarMenuItem>
-                <SidebarNavLink to="#">
-                  <SidebarMenuButton>
+                <SidebarMenuButton asChild>
+                  <Link to="#">
                     <Users className="h-5 w-5" />
                     <span>Staff</span>
-                  </SidebarMenuButton>
-                </SidebarNavLink>
+                  </Link>
+                </SidebarMenuButton>
               </SidebarMenuItem>
 
               <SidebarMenuItem>
-                <SidebarNavLink to="#">
-                  <SidebarMenuButton>
+                <SidebarMenuButton asChild>
+                  <Link to="#">
                     <BarChart3 className="h-5 w-5" />
                     <span>Reports</span>
-                  </SidebarMenuButton>
-                </SidebarNavLink>
+                  </Link>
+                </SidebarMenuButton>
               </SidebarMenuItem>
             </>
           )}
@@ -103,20 +103,20 @@ const AppSidebar = () => {
       <SidebarFooter>
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarNavLink to="#">
-              <SidebarMenuButton>
+            <SidebarMenuButton asChild>
+              <Link to="#">
                 <Settings className="h-5 w-5" />
                 <span>Settings</span>
-              </SidebarMenuButton>
-            </SidebarNavLink>
+              </Link>
+            </SidebarMenuButton>
           </SidebarMenuItem>
           <SidebarMenuItem>
-            <SidebarNavLink to="#">
-              <SidebarMenuButton>
+            <SidebarMenuButton asChild>
+              <Link to="#">
                 <HelpCircle className="h-5 w-5" />
                 <span>Help & Support</span>
-              </SidebarMenuButton>
-            </SidebarNavLink>
+              </Link>
+            </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarFooter>
