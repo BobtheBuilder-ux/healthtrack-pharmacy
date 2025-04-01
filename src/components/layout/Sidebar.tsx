@@ -20,10 +20,18 @@ import {
   Settings,
   HelpCircle
 } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const AppSidebar = () => {
   const { role } = currentUser;
+  const location = useLocation();
+  
+  const isActive = (path: string) => {
+    if (path === "/" && location.pathname === "/") {
+      return true;
+    }
+    return path !== "/" && location.pathname.startsWith(path);
+  };
   
   return (
     <Sidebar>
@@ -33,7 +41,7 @@ const AppSidebar = () => {
       <SidebarContent>
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton asChild>
+            <SidebarMenuButton asChild isActive={isActive("/")}>
               <Link to="/">
                 <HomeIcon className="h-5 w-5" />
                 <span>Dashboard</span>
@@ -42,8 +50,8 @@ const AppSidebar = () => {
           </SidebarMenuItem>
 
           <SidebarMenuItem>
-            <SidebarMenuButton asChild>
-              <Link to="#">
+            <SidebarMenuButton asChild isActive={isActive("/orders")}>
+              <Link to="/orders">
                 <ClipboardList className="h-5 w-5" />
                 <span>Order Queue</span>
               </Link>
@@ -51,8 +59,8 @@ const AppSidebar = () => {
           </SidebarMenuItem>
 
           <SidebarMenuItem>
-            <SidebarMenuButton asChild>
-              <Link to="#">
+            <SidebarMenuButton asChild isActive={isActive("/inventory")}>
+              <Link to="/inventory">
                 <Package2 className="h-5 w-5" />
                 <span>Inventory</span>
               </Link>
@@ -60,8 +68,8 @@ const AppSidebar = () => {
           </SidebarMenuItem>
 
           <SidebarMenuItem>
-            <SidebarMenuButton asChild>
-              <Link to="#">
+            <SidebarMenuButton asChild isActive={isActive("/prescriptions")}>
+              <Link to="/prescriptions">
                 <QrCode className="h-5 w-5" />
                 <span>Prescriptions</span>
               </Link>
@@ -69,8 +77,8 @@ const AppSidebar = () => {
           </SidebarMenuItem>
 
           <SidebarMenuItem>
-            <SidebarMenuButton asChild>
-              <Link to="#">
+            <SidebarMenuButton asChild isActive={isActive("/deliveries")}>
+              <Link to="/deliveries">
                 <Truck className="h-5 w-5" />
                 <span>Deliveries</span>
               </Link>
@@ -80,8 +88,8 @@ const AppSidebar = () => {
           {role === "manager" && (
             <>
               <SidebarMenuItem>
-                <SidebarMenuButton asChild>
-                  <Link to="#">
+                <SidebarMenuButton asChild isActive={isActive("/staff")}>
+                  <Link to="/staff">
                     <Users className="h-5 w-5" />
                     <span>Staff</span>
                   </Link>
@@ -89,8 +97,8 @@ const AppSidebar = () => {
               </SidebarMenuItem>
 
               <SidebarMenuItem>
-                <SidebarMenuButton asChild>
-                  <Link to="#">
+                <SidebarMenuButton asChild isActive={isActive("/reports")}>
+                  <Link to="/reports">
                     <BarChart3 className="h-5 w-5" />
                     <span>Reports</span>
                   </Link>
@@ -103,16 +111,16 @@ const AppSidebar = () => {
       <SidebarFooter>
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton asChild>
-              <Link to="#">
+            <SidebarMenuButton asChild isActive={isActive("/settings")}>
+              <Link to="/settings">
                 <Settings className="h-5 w-5" />
                 <span>Settings</span>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
           <SidebarMenuItem>
-            <SidebarMenuButton asChild>
-              <Link to="#">
+            <SidebarMenuButton asChild isActive={isActive("/help")}>
+              <Link to="/help">
                 <HelpCircle className="h-5 w-5" />
                 <span>Help & Support</span>
               </Link>
